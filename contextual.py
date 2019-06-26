@@ -70,7 +70,7 @@ d3 = matrix(diagonal(DD3))
 g3 = matrix(square(q3.dot(G)))
 print(d3.dot(g3.T))
 
-Q1VQ1 = G.dot(maximum(I1.dot(G.T*V*G).dot(I1),G.T.dot(V).dot(G))).dot(G.T)
+Q1VQ1 = G.dot(maximum(I1.dot(G.T).dot(V).dot(G).dot(I1),G.T.dot(V).dot(G))).dot(G.T)
 Q2VQ2 = G.dot(maximum(D2,G.T.dot(V).dot(G))).dot(G.T)
 Q3VQ3 = G.dot(maximum(D3,G.T.dot(V).dot(G))).dot(G.T)
 
