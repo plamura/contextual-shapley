@@ -1,6 +1,6 @@
 from numpy import * 
 
-# row/column order: emptyset, i, j, k, ij, ik, jk, ijk
+# 0, i, j, ij
 #V = matrix('0 0 0 0 0 0 0 0; 0 100 0 0 0 0 0 0; 0 0 125 0 0 0 0 0; 0 0 0 50 0 0 0 0; 0 0 0 0 270 0 0 0; 0 0 0 0 0 375 0 0; 0 0 0 0 0 0 350 0; 0 0 0 0 0 0 0 500')
 #V = matrix('0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 125 0 0 0 0 0; 0 0 0 50 0 0 0 0; 0 0 0 0 125 0 0 0; 0 0 0 0 0 50 0 0; 0 0 0 0 0 0 350 0; 0 0 0 0 0 0 0 350')
 #t = [0,1,2,3,4,5,6,7]
@@ -57,23 +57,23 @@ D3[:,:] = D3[:,tt3]
 
 DD1 = maximum((D1-D),0)
 d1 = matrix(diagonal(DD1))
-g1 = matrix(square(q1*G))
-print(d1*g1.T)
+g1 = matrix(square(q1.dot(G)))
+print(d1.dot(g1.T))
 
 DD2 = maximum((D2-D),0)
 d2 = matrix(diagonal(DD2))
-g2 = matrix(square(q2*G))
-print(d2*g2.T)
+g2 = matrix(square(q2.dot(G)))
+print(d2.dot(g2.T))
 
 DD3= maximum((D3-D),0)
 d3 = matrix(diagonal(DD3))
-g3 = matrix(square(q3*G))
-print(d3*g3.T)
+g3 = matrix(square(q3.dot(G)))
+print(d3.dot(g3.T))
 
-Q1VQ1 = G*(maximum(I1*(G.T*V*G)*I1,G.T*V*G))*G.T
-Q2VQ2 = G*(maximum(D2,G.T*V*G))*G.T
-Q3VQ3 = G*(maximum(D3,G.T*V*G))*G.T
+Q1VQ1 = G.dot(maximum(I1.dot(G.T*V*G).dot(I1),G.T.dot(V).dot(G))).dot(G.T)
+Q2VQ2 = G.dot(maximum(D2,G.T.dot(V).dot(G))).dot(G.T)
+Q3VQ3 = G.dot(maximum(D3,G.T.dot(V).dot(G))).dot(G.T)
 
-print(q1*(Q1VQ1 - V)*q1.T)
-print(q2*(Q2VQ2 - V)*q2.T)
-print(q3*(Q3VQ3 - V)*q3.T)
+print(q1.dot(Q1VQ1 - V).dot(q1.T))
+print(q2.dot(Q2VQ2 - V).dot(q2.T))
+print(q3.dot(Q3VQ3 - V).dot(q3.T))
