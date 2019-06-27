@@ -55,17 +55,19 @@ d3 = matrix(diagonal(DD3))
 g3 = matrix(square(q3.dot(G)))
 print(d3.dot(g3.T))
 
-Q1 = G.dot(T1).dot(G.T)
-Q2 = G.dot(T2).dot(G.T)
-Q3 = G.dot(T3).dot(G.T)
 
 W1 = G.dot(K1).dot(G.T)
 W2 = G.dot(K2).dot(G.T)
 W3 = G.dot(K3).dot(G.T)
 
-print(q1.dot(W1.dot(Q1).dot(V).dot(Q1).dot(W1) - W1.dot(V).dot(W1)).dot(q1.T))
-print(q2.dot(W2.dot(Q2).dot(V).dot(Q2).dot(W2) - W2.dot(V).dot(W2)).dot(q2.T))
-print(q3.dot(W3.dot(Q3).dot(V).dot(Q3).dot(W3) - W3.dot(V).dot(W3)).dot(q3.T))
+Q1 = G.dot(T1).dot(G.T)
+Q2 = G.dot(T2).dot(G.T)
+Q3 = G.dot(T3).dot(G.T)
+
+print(q1.dot(W1).dot(Q1.dot(V).dot(Q1) - V).dot(W1).dot(q1.T))
+print(q2.dot(W2).dot(Q2.dot(V).dot(Q2) - V).dot(W2).dot(q2.T))
+print(q3.dot(W3).dot(Q3.dot(V).dot(Q3) - V).dot(W3).dot(q3.T))
+
 
 print(q1.dot(W1).dot(Q1).dot(V).dot(Q1).dot(W1).dot(q1.T) - q1.dot(W1).dot(V).dot(W1).dot(q1.T))
 print(q2.dot(W2).dot(Q2).dot(V).dot(Q2).dot(W2).dot(q2.T) - q2.dot(W2).dot(V).dot(W2).dot(q2.T))
